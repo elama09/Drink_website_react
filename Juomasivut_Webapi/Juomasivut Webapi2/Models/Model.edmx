@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JuomasivuDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Arvostelut">
+          <Key>
+            <PropertyRef Name="arvostelu_id" />
+          </Key>
+          <Property Name="arvostelu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="juoma_id" Type="int" Nullable="false" />
+          <Property Name="kayttaja_id" Type="int" Nullable="false" />
+          <Property Name="arvosteluteksti" Type="nvarchar" MaxLength="300" />
+          <Property Name="pisteet" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Juomat">
+          <Key>
+            <PropertyRef Name="juoma_id" />
+          </Key>
+          <Property Name="juoma_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nimi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="valmistaja" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="hinta" Type="float" />
+          <Property Name="valmistusmaa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="valmistusvuosi" Type="int" Nullable="false" />
+          <Property Name="kuvaus" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="kuva" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Kayttajat">
+          <Key>
+            <PropertyRef Name="kayttaja_id" />
+          </Key>
+          <Property Name="kayttaja_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nick" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="etunimi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sukunimi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="salasana" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kuva" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Arvostelut_Juomat">
+          <End Role="Juomat" Type="Self.Juomat" Multiplicity="1" />
+          <End Role="Arvostelut" Type="Self.Arvostelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Juomat">
+              <PropertyRef Name="juoma_id" />
+            </Principal>
+            <Dependent Role="Arvostelut">
+              <PropertyRef Name="juoma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arvostelut_Kayttajat">
+          <End Role="Kayttajat" Type="Self.Kayttajat" Multiplicity="1" />
+          <End Role="Arvostelut" Type="Self.Arvostelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kayttajat">
+              <PropertyRef Name="kayttaja_id" />
+            </Principal>
+            <Dependent Role="Arvostelut">
+              <PropertyRef Name="kayttaja_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JuomasivuDBModelStoreContainer">
+          <EntitySet Name="Arvostelut" EntityType="Self.Arvostelut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Juomat" EntityType="Self.Juomat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Arvostelut_Juomat" Association="Self.FK_Arvostelut_Juomat">
+            <End Role="Juomat" EntitySet="Juomat" />
+            <End Role="Arvostelut" EntitySet="Arvostelut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arvostelut_Kayttajat" Association="Self.FK_Arvostelut_Kayttajat">
+            <End Role="Kayttajat" EntitySet="Kayttajat" />
+            <End Role="Arvostelut" EntitySet="Arvostelut" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JuomasivuDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Arvostelut">
+          <Key>
+            <PropertyRef Name="arvostelu_id" />
+          </Key>
+          <Property Name="arvostelu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="juoma_id" Type="Int32" Nullable="false" />
+          <Property Name="kayttaja_id" Type="Int32" Nullable="false" />
+          <Property Name="arvosteluteksti" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="pisteet" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Juomat" Relationship="Self.FK_Arvostelut_Juomat" FromRole="Arvostelut" ToRole="Juomat" />
+          <NavigationProperty Name="Kayttajat" Relationship="Self.FK_Arvostelut_Kayttajat" FromRole="Arvostelut" ToRole="Kayttajat" />
+        </EntityType>
+        <EntityType Name="Juomat">
+          <Key>
+            <PropertyRef Name="juoma_id" />
+          </Key>
+          <Property Name="juoma_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="valmistaja" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hinta" Type="Double" />
+          <Property Name="valmistusmaa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="valmistusvuosi" Type="Int32" Nullable="false" />
+          <Property Name="kuvaus" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kuva" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arvostelut" Relationship="Self.FK_Arvostelut_Juomat" FromRole="Juomat" ToRole="Arvostelut" />
+        </EntityType>
+        <EntityType Name="Kayttajat">
+          <Key>
+            <PropertyRef Name="kayttaja_id" />
+          </Key>
+          <Property Name="kayttaja_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nick" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="salasana" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kuva" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Arvostelut" Relationship="Self.FK_Arvostelut_Kayttajat" FromRole="Kayttajat" ToRole="Arvostelut" />
+        </EntityType>
+        <Association Name="FK_Arvostelut_Juomat">
+          <End Role="Juomat" Type="Self.Juomat" Multiplicity="1" />
+          <End Role="Arvostelut" Type="Self.Arvostelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Juomat">
+              <PropertyRef Name="juoma_id" />
+            </Principal>
+            <Dependent Role="Arvostelut">
+              <PropertyRef Name="juoma_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arvostelut_Kayttajat">
+          <End Role="Kayttajat" Type="Self.Kayttajat" Multiplicity="1" />
+          <End Role="Arvostelut" Type="Self.Arvostelut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kayttajat">
+              <PropertyRef Name="kayttaja_id" />
+            </Principal>
+            <Dependent Role="Arvostelut">
+              <PropertyRef Name="kayttaja_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JuomasivuDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Arvostelut" EntityType="Self.Arvostelut" />
+          <EntitySet Name="Juomat" EntityType="Self.Juomat" />
+          <EntitySet Name="Kayttajat" EntityType="Self.Kayttajat" />
+          <AssociationSet Name="FK_Arvostelut_Juomat" Association="Self.FK_Arvostelut_Juomat">
+            <End Role="Juomat" EntitySet="Juomat" />
+            <End Role="Arvostelut" EntitySet="Arvostelut" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arvostelut_Kayttajat" Association="Self.FK_Arvostelut_Kayttajat">
+            <End Role="Kayttajat" EntitySet="Kayttajat" />
+            <End Role="Arvostelut" EntitySet="Arvostelut" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JuomasivuDBModelStoreContainer" CdmEntityContainer="JuomasivuDBEntities">
+          <EntitySetMapping Name="Arvostelut">
+            <EntityTypeMapping TypeName="JuomasivuDBModel.Arvostelut">
+              <MappingFragment StoreEntitySet="Arvostelut">
+                <ScalarProperty Name="arvostelu_id" ColumnName="arvostelu_id" />
+                <ScalarProperty Name="juoma_id" ColumnName="juoma_id" />
+                <ScalarProperty Name="kayttaja_id" ColumnName="kayttaja_id" />
+                <ScalarProperty Name="arvosteluteksti" ColumnName="arvosteluteksti" />
+                <ScalarProperty Name="pisteet" ColumnName="pisteet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juomat">
+            <EntityTypeMapping TypeName="JuomasivuDBModel.Juomat">
+              <MappingFragment StoreEntitySet="Juomat">
+                <ScalarProperty Name="juoma_id" ColumnName="juoma_id" />
+                <ScalarProperty Name="kategoria" ColumnName="kategoria" />
+                <ScalarProperty Name="nimi" ColumnName="nimi" />
+                <ScalarProperty Name="valmistaja" ColumnName="valmistaja" />
+                <ScalarProperty Name="hinta" ColumnName="hinta" />
+                <ScalarProperty Name="valmistusmaa" ColumnName="valmistusmaa" />
+                <ScalarProperty Name="valmistusvuosi" ColumnName="valmistusvuosi" />
+                <ScalarProperty Name="kuvaus" ColumnName="kuvaus" />
+                <ScalarProperty Name="kuva" ColumnName="kuva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kayttajat">
+            <EntityTypeMapping TypeName="JuomasivuDBModel.Kayttajat">
+              <MappingFragment StoreEntitySet="Kayttajat">
+                <ScalarProperty Name="kayttaja_id" ColumnName="kayttaja_id" />
+                <ScalarProperty Name="nick" ColumnName="nick" />
+                <ScalarProperty Name="etunimi" ColumnName="etunimi" />
+                <ScalarProperty Name="sukunimi" ColumnName="sukunimi" />
+                <ScalarProperty Name="salasana" ColumnName="salasana" />
+                <ScalarProperty Name="kuva" ColumnName="kuva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,35 @@
+#lisaaLaatikko {
+  padding-top: 5%;
+  color: black;
+}
+
+#lista {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+#teksti {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 18px;
+}
+input[type="number"] {
+  width: 196px;
+}
+#nappi {
+  background-color: bisque;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+#marginaali {
+  padding-top: 5%;
+}
+
+#linkit {
+  font-weight: bold;
+}
+
+#jumbo {
+  background-color: rgb(158, 147, 147);
+}
