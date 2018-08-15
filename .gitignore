@@ -4,7 +4,7 @@
 #WebApi-ignore ja Build
 /Juomasivut_Webapi
 /build
-/Juomasivu_Webapi
+Juomasivut_Webapi/
 
 # User-specific files
 *.suo
