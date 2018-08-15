@@ -11,7 +11,7 @@ import {
 import "./Components.css";
 import { Row, Col, Grid } from "react-bootstrap";
 
-const urlHaeKaikki = "http://localhost:18137/api/juomat/";
+const urlHaeKaikki = "https://viski.azurewebsites.net/api/juomat/";
 
 class Details extends Component {
   constructor({ match }) {

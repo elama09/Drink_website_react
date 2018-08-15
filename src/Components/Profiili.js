@@ -3,8 +3,8 @@ import ProfiiliArvostelu from "./ProfiiliArvostelu";
 import { PoistaArvosteluApista } from "./Palvelu";
 import "./Components.css";
 
-const urlHaeKaikkiKayttajat = "http://localhost:18137/api/kayttajat/";
-const urlHaeArvostelut = "http://localhost:18137/api/arvosteluts/";
+const urlHaeKaikkiKayttajat = "https://viski.azurewebsites.net/api/kayttajat/";
+const urlHaeArvostelut = "https://viski.azurewebsites.net/api/arvosteluts/";
 var kaikkiArvostelut = [];
 var kaikkiArvostelut2 = [];
 
@@ -65,7 +65,7 @@ class Profiili extends Component {
       );
     });
     if (this.state.kayttaja.kayttaja_id == null) {
-      return <br />;
+      return (<div><h2>Et ole kirjautunut sisään</h2><h3>Paina Login ja kirjaudu</h3></div>)
     } else {
       return (
         <div>

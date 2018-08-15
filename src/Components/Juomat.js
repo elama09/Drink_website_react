@@ -9,7 +9,7 @@ import {
 import Juomalista from "./Juomalista";
 import "./Components.css";
 
-const urlHaeKaikki = "http://localhost:18137/api/juomat/";
+const urlHaeKaikki = "https://viski.azurewebsites.net/api/juomat/";
 var kokolista = [];
 
 class Juomat extends Component {
@@ -35,7 +35,6 @@ class Juomat extends Component {
       .then(data => {
         this.setState({ lista: data });
         kokolista = data;
-        console.log(kokolista);
       });
   };
 

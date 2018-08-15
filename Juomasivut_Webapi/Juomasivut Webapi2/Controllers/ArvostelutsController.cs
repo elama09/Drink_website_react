@@ -19,15 +19,15 @@ namespace Juomasivut_Webapi2.Controllers
         private JuomasivuDBEntities db = new JuomasivuDBEntities();
 
         // GET: api/Arvosteluts
-        public IQueryable<Arvostelut> GetArvostelut(int id)
+        public IEnumerable<Arvostelut> GetArvostelut(int id)
         {
-            var kaikki = db.Arvostelut.Where(x => x.juoma_id == id);
+            var kaikki = db.Arvostelut.Where(x => x.juoma_id == id).ToArray();
             return kaikki;
         }
 
-        public IQueryable<Arvostelut> GetArvostelut()
+        public IEnumerable<Arvostelut> GetArvostelut()
         {
-            return db.Arvostelut;
+            return db.Arvostelut.ToArray();
         }
 
 

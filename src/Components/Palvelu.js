@@ -1,8 +1,8 @@
 import React from 'react';
 
-const urlHaeJuomat = 'http://localhost:18137/api/juomat/'
-const urlHaeArvostelut = 'http://localhost:18137/api/arvosteluts/'
-const urlHaeKaikkiKayttajat = 'http://localhost:18137/api/kayttajat/'
+const urlHaeJuomat = 'https://viski.azurewebsites.net/api/juomat/'
+const urlHaeArvostelut = 'https://viski.azurewebsites.net/api/arvosteluts/'
+const urlHaeKaikkiKayttajat = 'https://viski.azurewebsites.net/api/kayttajat/'
 
 export function LisaaUusiJuomaApi(juoma) {
     fetch(urlHaeJuomat, {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Kayttaja from "./Kayttaja";
 import "./Components.css";
 
-const urlHaeKayttajat = "http://localhost:18137/api/kayttajat/";
+const urlHaeKayttajat = "https://viski.azurewebsites.net/api/kayttajat/";
 
 class Kayttajat extends Component {
   constructor() {
@@ -26,8 +26,6 @@ class Kayttajat extends Component {
       .then(result => result.json())
       .then(data => {
         this.setState({ lista: data });
-        console.log(this.state.lista);
-        console.log("moi");
       });
   };
 

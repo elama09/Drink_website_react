@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import "./Components.css";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-const urlHaeArvostelut = "http://localhost:18137/api/juomat/";
+const urlHaeArvostelut = "https://viski.azurewebsites.net/api/juomat/";
 class ProfiiliArvostelu extends Component {
   state = {
     redirect: false,

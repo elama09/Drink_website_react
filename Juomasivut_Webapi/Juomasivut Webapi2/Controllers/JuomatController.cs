@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -19,9 +20,9 @@ namespace Juomasivut_Webapi2.Controllers
         private JuomasivuDBEntities db = new JuomasivuDBEntities();
 
         // GET: api/Juomat
-        public IQueryable<Juomat> GetJuomat()
+        public IEnumerable<Juomat> GetJuomat()
         {
-            return db.Juomat;
+            return db.Juomat.ToArray();
         }
 
         // GET: api/Juomat/5

@@ -9,7 +9,7 @@ import {
 import "./Components.css";
 import { Grid, Row, Col } from "react-bootstrap";
 
-const urlHaeKaikkiKayttajat = "http://localhost:18137/api/kayttajat/";
+const urlHaeKaikkiKayttajat = "https://viski.azurewebsites.net/api/kayttajat/";
 var kaikkiKayttajat = [];
 
 class Kirjautuminen extends Component {

@@ -19,9 +19,9 @@ namespace Juomasivut_Webapi2.Controllers
         private JuomasivuDBEntities db = new JuomasivuDBEntities();
 
         // GET: api/Kayttajat
-        public IQueryable<Kayttajat> GetKayttajat()
+        public IEnumerable<Kayttajat> GetKayttajat()
         {
-            return db.Kayttajat;
+            return db.Kayttajat.ToArray();
         }
 
         // GET: api/Kayttajat/5

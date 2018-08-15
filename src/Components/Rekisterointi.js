@@ -3,7 +3,7 @@ import { LisaaKayttajaApi, handleFileUpload } from "./Palvelu";
 import { Redirect } from "react-router-dom";
 import "./Components.css";
 
-const urlHaeKaikkiKayttajat = "http://localhost:18137/api/kayttajat/";
+const urlHaeKaikkiKayttajat = "https://viski.azurewebsites.net/api/kayttajat/";
 var kaikkiKayttajat = [];
 var saltsa = [
   "A",

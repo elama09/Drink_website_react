@@ -139,7 +139,7 @@ class App extends Component {
                   <img
                     width={64}
                     height={64}
-                    src="https://www.saveur.com/sites/saveur.com/files/styles/1000_1x_/public/import/2010/images/2010-11/7-SAV1110-kitchen-glass-burgundy-p.jpg.jpg?itok=dzcv1E57"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD1mRLI7A8rCcsH89vYS7v1eXFyfBcxhye6NrhuJrXy38iGz-IOg"
                     // alt="thumbnail"
                   />
                 </Media.Left>

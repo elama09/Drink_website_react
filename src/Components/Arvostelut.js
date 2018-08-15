@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import "./Components.css";
 
-const urlHaeArvostelut = "http://localhost:18137/api/arvosteluts/";
+const urlHaeArvostelut = "https://viski.azurewebsites.net/api/arvosteluts/";
 var kaikkiArvostelut = [];
 
 class Details extends Component {
@@ -31,7 +31,6 @@ class Details extends Component {
       .then(data => {
         kaikkiArvostelut = data;
         this.setState({ arvostelut: data });
-        console.log(this.state.arvostelut);
       });
   };
 
