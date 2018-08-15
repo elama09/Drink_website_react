@@ -34,7 +34,7 @@ class Kayttaja extends Component {
         </Link>
         &ensp;&ensp;{" "}
         {id == 1 ? (
-          <button id="nappi" onClick={this.Poista} type="button">
+          <button id="nappi" style={(this.props.kayttaja.kayttaja_id == 1 ? {display: 'none'} : {display: 'block'})} onClick={this.Poista} type="button">
             Poista käyttäjä
           </button>
         ) : (
