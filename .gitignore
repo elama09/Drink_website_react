@@ -3,7 +3,7 @@
 
 #WebApi-ignore ja Build
 Juomasivut_Webapi/
-/build
+build/
 
 
 # User-specific files
